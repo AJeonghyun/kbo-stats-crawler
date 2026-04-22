@@ -51,6 +51,13 @@ data/tmp/
 output/
 exports/
 tmp/
+!data/
+!data/raw/
+!data/processed/
+!data/tmp/
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/tmp/.gitkeep
 
 # Local databases / dumps
 *.db
