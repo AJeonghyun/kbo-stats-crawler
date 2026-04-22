@@ -45,9 +45,9 @@ logs/
 crawler.log
 
 # Local crawler outputs / exports
-data/raw/
-data/processed/
-data/tmp/
+data/raw/*
+data/processed/*
+data/tmp/*
 output/
 exports/
 tmp/
