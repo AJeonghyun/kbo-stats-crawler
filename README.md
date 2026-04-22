@@ -1,52 +1,40 @@
-# KBO Stats Crawler
+# KBO Crawler
 
-KBO 기록 페이지의 데이터를 수집하고, 분석 또는 재가공에 활용할 수 있도록 정리하는 크롤러 프로젝트입니다.
+KBO 홈페이지의 타자 개인 기록과 팀 기록을 수집해 PostgreSQL에 적재하는 크롤러입니다.
 
-## 소개
+## Setup
 
-이 저장소는 KBO 공식 기록 페이지에서 필요한 데이터를 안정적으로 수집하고, 후속 분석이나 시각화에 활용할 수 있는 형태로 저장하는 것을 목표로 합니다.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-## 주요 기능
+## Run
 
-- KBO 기록 페이지 데이터 수집
-- 수집 데이터 정규화 및 구조화
-- CSV, JSON 등 후처리 가능한 형태로 저장
-- 반복 실행을 고려한 크롤링 작업 자동화
+로컬 Unix socket으로 붙는 기본 실행:
 
-## 수집 대상 예시
+```bash
+source .venv/bin/activate
+python crawler.py
+```
 
-- 타자 기록
-- 투수 기록
-- 팀 순위
-- 경기 결과
-- 시즌별 누적 기록
+TCP로 붙으려면:
 
-## 실행 흐름
+```bash
+source .venv/bin/activate
+python crawler.py --db-host localhost --db-name kbo --db-user anjeonghyeon
+```
 
-1. 수집 대상 페이지를 지정합니다.
-2. 페이지에서 필요한 데이터를 추출합니다.
-3. 데이터를 정리하고 검증합니다.
-4. 파일 또는 데이터 저장소에 결과를 저장합니다.
+옵션:
 
-## 개발 목적
+```bash
+python crawler.py --help
+```
 
-- KBO 데이터 수집 자동화
-- 야구 기록 분석 기반 마련
-- 개인 프로젝트 및 포트폴리오 확장
+기본적으로 아래 페이지를 수집합니다.
 
-## 향후 계획
-
-- 수집 대상 페이지 확대
-- 예외 처리 및 재시도 로직 강화
-- 스케줄링 기반 자동 실행 지원
-- 데이터 시각화 및 대시보드 연동
-
-## 주의사항
-
-- 크롤링 대상 사이트의 이용 정책을 확인한 뒤 사용해야 합니다.
-- 페이지 구조 변경 시 수집 로직 수정이 필요할 수 있습니다.
-- 과도한 요청은 차단 원인이 될 수 있으므로 요청 간격 조절이 필요합니다.
-
-## 라이선스
-
-별도 라이선스는 아직 지정하지 않았습니다.
+- 선수 타자 기본기록: `https://www.koreabaseball.com/Record/Player/HitterBasic/Basic1.aspx?sort=HRA_RT`
+- 선수 타자 세부기록: `https://www.koreabaseball.com/Record/Player/HitterBasic/Basic2.aspx?sort=HRA_RT`
+- 팀 타자 기본기록: `https://www.koreabaseball.com/Record/Team/Hitter/Basic1.aspx`
+- 팀 타자 세부기록: `https://www.koreabaseball.com/Record/Team/Hitter/Basic2.aspx`

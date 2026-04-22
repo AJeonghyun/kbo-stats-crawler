@@ -1,0 +1,60 @@
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python tooling
+.python-version
+pip-wheel-metadata/
+
+# Environment / secrets
+.env
+.env.*
+.envrc
+*.pem
+*.key
+*.crt
+secrets.json
+credentials.json
+cookies.txt
+
+# Tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+crawler.log
+
+# Local crawler outputs / exports
+data/raw/
+data/processed/
+data/tmp/
+output/
+exports/
+tmp/
+
+# Local databases / dumps
+*.db
+*.sqlite
+*.sqlite3
+dump.sql
+*.dump
